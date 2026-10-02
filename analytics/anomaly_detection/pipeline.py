@@ -1,0 +1,474 @@
+"""
+CyberLens - Phase 4
+Anomaly Detection Pipeline
+==========================
+
+Purpose:
+    Orchestrate the Phase 4 anomaly analytics workflow.
+
+Pipeline:
+    SOC/CSE operational records
+        ↓
+    Feature Engineering
+        ↓
+    Statistical Anomaly Detection
+        ↓
+    Isolation Forest
+        ↓
+    Anomaly Signal Fusion
+        ↓
+    Explainable Supervisory Anomaly Signals
+
+Important:
+    This pipeline produces review-support signals.
+    It does NOT classify attacks, determine violations, or replace
+    human supervisory examination.
+"""
+
+from __future__ import annotations
+
+from typing import Any, Optional
+
+import pandas as pd
+
+from .features import build_entity_features
+from .statistical_anomalies import detect_statistical_anomalies
+from .isolation_forest import (
+    detect_isolation_forest_anomalies,
+)
+from .signal_fusion import build_anomaly_signals
+
+
+# ---------------------------------------------------------------------
+# Pipeline version
+# ---------------------------------------------------------------------
+
+PIPELINE_VERSION = "cyberlens-phase4-0.3.0"
+
+
+# ---------------------------------------------------------------------
+# Default feature groups
+# ---------------------------------------------------------------------
+
+DEFAULT_FEATURE_COLUMNS = [
+    "alert_count",
+    "case_count",
+    "investigation_count",
+    "escalation_count",
+
+    "alert_closure_rate",
+    "open_alert_rate",
+    "high_severity_alert_rate",
+    "median_acknowledgement_hours",
+    "mean_acknowledgement_hours",
+    "median_alert_closure_hours",
+    "mean_alert_closure_hours",
+    "alert_closure_time_std",
+
+    "investigation_completion_rate",
+    "median_investigation_hours",
+    "mean_investigation_hours",
+    "investigation_time_std",
+
+    "case_closure_rate",
+    "median_case_closure_hours",
+    "mean_case_closure_hours",
+
+    "escalation_rate",
+    "non_escalation_rate",
+    "escalation_per_investigation",
+
+    "investigations_per_alert",
+    "investigations_per_case",
+    "cases_per_alert",
+
+    "asset_count",
+    "critical_asset_count",
+    "critical_asset_rate",
+    "monitored_asset_count",
+    "asset_monitoring_rate",
+    "critical_asset_monitoring_rate",
+
+    "monitoring_coverage",
+    "telemetry_availability_rate",
+
+    "feature_data_completeness",
+]
+
+
+# ---------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------
+
+
+def _prepare_feature_frame(
+    features: pd.DataFrame,
+) -> pd.DataFrame:
+    """
+    Validate and prepare entity-level features.
+
+    The anomaly models require an entity identifier and numerical
+    operational features.
+    """
+
+    if not isinstance(features, pd.DataFrame):
+        raise TypeError(
+            "features must be a pandas DataFrame"
+        )
+
+    if "entity_id" not in features.columns:
+        raise ValueError(
+            "Feature DataFrame must contain 'entity_id'"
+        )
+
+    if features.empty:
+        return features.copy()
+
+    prepared = features.copy()
+
+    prepared["entity_id"] = (
+        prepared["entity_id"]
+        .astype(str)
+        .str.strip()
+    )
+
+    prepared = prepared[
+        prepared["entity_id"].ne("")
+    ].copy()
+
+    return prepared
+
+
+def _build_source_context(
+    alerts: Optional[pd.DataFrame],
+    cases: Optional[pd.DataFrame],
+    investigations: Optional[pd.DataFrame],
+    escalations: Optional[pd.DataFrame],
+) -> dict[str, dict[str, list[str]]]:
+    """
+    Build a mapping from entity to source record IDs.
+
+    This preserves evidence traceability when source records provide
+    both entity_id and record_id.
+    """
+
+    context: dict[
+        str,
+        dict[str, list[str]]
+    ] = {}
+
+    tables = {
+        "alerts": alerts,
+        "cases": cases,
+        "investigations": investigations,
+        "escalations": escalations,
+    }
+
+    for table_name, df in tables.items():
+
+        if df is None or df.empty:
+            continue
+
+        if "entity_id" not in df.columns:
+            continue
+
+        if "record_id" not in df.columns:
+            continue
+
+        for _, row in df.iterrows():
+
+            entity_id = str(
+                row["entity_id"]
+            ).strip()
+
+            record_id = str(
+                row["record_id"]
+            ).strip()
+
+            if not entity_id or not record_id:
+                continue
+
+            context.setdefault(
+                entity_id,
+                {},
+            )
+
+            context[entity_id].setdefault(
+                table_name,
+                [],
+            ).append(record_id)
+
+    return context
+
+
+def _attach_source_context(
+    signals: list[dict[str, Any]],
+    source_context: dict[
+        str,
+        dict[str, list[str]]
+    ],
+) -> list[dict[str, Any]]:
+    """
+    Attach source record identifiers to final signals.
+
+    Existing source_record_ids generated by signal fusion are
+    preserved.
+    """
+
+    for signal in signals:
+
+        entity_id = str(
+            signal.get(
+                "entity_id",
+                "",
+            )
+        )
+
+        entity_context = source_context.get(
+            entity_id,
+            {},
+        )
+
+        existing_ids = list(
+            signal.get(
+                "source_record_ids",
+                [],
+            )
+            or []
+        )
+
+        for records in entity_context.values():
+
+            for record_id in records:
+
+                if record_id not in existing_ids:
+                    existing_ids.append(
+                        record_id
+                    )
+
+        signal["source_record_ids"] = existing_ids
+
+        signal["pipeline_version"] = (
+            PIPELINE_VERSION
+        )
+
+    return signals
+
+
+# ---------------------------------------------------------------------
+# Main pipeline
+# ---------------------------------------------------------------------
+
+
+def run_anomaly_pipeline(
+    alerts: Optional[pd.DataFrame] = None,
+    cases: Optional[pd.DataFrame] = None,
+    investigations: Optional[pd.DataFrame] = None,
+    escalations: Optional[pd.DataFrame] = None,
+    assets: Optional[pd.DataFrame] = None,
+    monitoring: Optional[pd.DataFrame] = None,
+    assessment_id: str = "ASSESSMENT-001",
+    period_start: Optional[str] = None,
+    period_end: Optional[str] = None,
+    z_threshold: float = 3.0,
+    iqr_multiplier: float = 1.5,
+    min_group_size: int = 5,
+    random_state: int = 42,
+) -> dict[str, Any]:
+    """
+    Execute the complete Phase 4 anomaly analytics pipeline.
+
+    Returns
+    -------
+    dict
+        Contains:
+
+        features
+            Entity-level engineered features.
+
+        statistical_anomalies
+            Statistical anomaly findings.
+
+        isolation_forest
+            Isolation Forest findings.
+
+        signals
+            Final fused supervisory anomaly signals.
+
+        metadata
+            Pipeline execution metadata.
+    """
+
+    # =============================================================
+    # STEP 1 — FEATURE ENGINEERING
+    # =============================================================
+
+    features = build_entity_features(
+        alerts=alerts,
+        cases=cases,
+        investigations=investigations,
+        escalations=escalations,
+        assets=assets,
+        monitoring=monitoring,
+        period_start=period_start,
+        period_end=period_end,
+    )
+
+    features = _prepare_feature_frame(
+        features
+    )
+
+    # -------------------------------------------------------------
+    # Handle empty input
+    # -------------------------------------------------------------
+
+    if features.empty:
+
+        return {
+            "features": features,
+            "statistical_anomalies": pd.DataFrame(),
+            "isolation_forest": pd.DataFrame(),
+            "signals": [],
+            "metadata": {
+                "pipeline_version": PIPELINE_VERSION,
+                "assessment_id": assessment_id,
+                "entity_count": 0,
+                "feature_count": 0,
+                "statistical_anomaly_count": 0,
+                "isolation_forest_anomaly_count": 0,
+                "signal_count": 0,
+                "period_start": period_start,
+                "period_end": period_end,
+            },
+        }
+
+    # =============================================================
+    # STEP 2 — SELECT SUPPORTED FEATURES
+    # =============================================================
+
+    available_features = [
+        column
+        for column in DEFAULT_FEATURE_COLUMNS
+        if column in features.columns
+    ]
+
+    if not available_features:
+        raise ValueError(
+            "No supported numerical feature columns "
+            "were found."
+        )
+
+    model_features = features[
+        ["entity_id"] + available_features
+    ].copy()
+
+    # =============================================================
+    # STEP 3 — STATISTICAL ANOMALY DETECTION
+    # =============================================================
+
+    statistical_anomalies = (
+        detect_statistical_anomalies(
+            model_features,
+            feature_columns=available_features,
+            z_threshold=z_threshold,
+            iqr_multiplier=iqr_multiplier,
+            min_group_size=min_group_size,
+        )
+    )
+
+    # =============================================================
+    # STEP 4 — ISOLATION FOREST
+    # =============================================================
+
+    isolation_forest = (
+        detect_isolation_forest_anomalies(
+            model_features,
+            feature_columns=available_features,
+            random_state=random_state,
+        )
+    )
+
+    # =============================================================
+    # STEP 5 — SIGNAL FUSION
+    # =============================================================
+
+    signals = build_anomaly_signals(
+        features=model_features,
+        statistical_findings=statistical_anomalies,
+        isolation_results=isolation_forest,
+        assessment_id=assessment_id,
+        version=PIPELINE_VERSION,
+    )
+
+    # =============================================================
+    # STEP 6 — EVIDENCE TRACEABILITY
+    # =============================================================
+
+    source_context = _build_source_context(
+        alerts=alerts,
+        cases=cases,
+        investigations=investigations,
+        escalations=escalations,
+    )
+
+    signals = _attach_source_context(
+        signals,
+        source_context,
+    )
+
+    # =============================================================
+    # STEP 7 — PIPELINE METADATA
+    # =============================================================
+
+    if (
+        not isolation_forest.empty
+        and "if_anomaly" in isolation_forest.columns
+    ):
+        isolation_anomaly_count = int(
+            isolation_forest[
+                "if_anomaly"
+            ].sum()
+        )
+    else:
+        isolation_anomaly_count = 0
+
+    metadata = {
+        "pipeline_version": PIPELINE_VERSION,
+        "assessment_id": assessment_id,
+        "entity_count": int(
+            len(features)
+        ),
+        "feature_count": int(
+            len(available_features)
+        ),
+        "statistical_anomaly_count": int(
+            len(statistical_anomalies)
+        ),
+        "isolation_forest_anomaly_count": (
+            isolation_anomaly_count
+        ),
+        "signal_count": int(
+            len(signals)
+        ),
+        "period_start": period_start,
+        "period_end": period_end,
+    }
+
+    # =============================================================
+    # FINAL RESULT
+    # =============================================================
+
+    return {
+        "features": features,
+        "statistical_anomalies": statistical_anomalies,
+        "isolation_forest": isolation_forest,
+        "signals": signals,
+        "metadata": metadata,
+    }
+
+
+# ---------------------------------------------------------------------
+# Compatibility alias
+# ---------------------------------------------------------------------
+
+run_pipeline = run_anomaly_pipeline
