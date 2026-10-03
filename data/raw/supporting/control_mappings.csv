@@ -1,0 +1,187 @@
+control_id,capability_family,mapping_description,mapping_version
+CTRL-DET-02,Threat Detection,Alert handling and detection coverage,1.0
+CTRL-IR-03,Incident Response,"Investigation, escalation, response and remediation",1.0
+CTRL-MON-01,Security Operations,Monitoring and telemetry coverage,1.0
+CTRL-ACC-04,Operational Discipline,Access and privilege-related operational handling,1.0
+CTRL-VUL-05,Cyber Resilience,Vulnerability and remediation evidence,1.0
+CTRL-GOV-06,Governance and Oversight,Reported KPI/capability versus operational evidence,1.0
+CTRL-MON-01,Security Operations,Applies to Energy supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Energy supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Energy supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Energy supervisory assessment evidence,1.0
+CTRL-ACC-04,Operational Discipline,Applies to Energy supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Energy supervisory assessment evidence,1.0
+CTRL-GOV-06,Governance and Oversight,Applies to Transport supervisory assessment evidence,1.0
+CTRL-MON-01,Security Operations,Applies to Transport supervisory assessment evidence,1.0
+CTRL-ACC-04,Operational Discipline,Applies to Transport supervisory assessment evidence,1.0
+CTRL-MON-01,Security Operations,Applies to Transport supervisory assessment evidence,1.0
+CTRL-IR-03,Incident Response,Applies to Transport supervisory assessment evidence,1.0
+CTRL-ACC-04,Operational Discipline,Applies to Transport supervisory assessment evidence,1.0
+CTRL-IR-03,Incident Response,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-IR-03,Incident Response,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-GOV-06,Governance and Oversight,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-IR-03,Incident Response,Applies to Finance supervisory assessment evidence,1.0
+CTRL-IR-03,Incident Response,Applies to Finance supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Finance supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Finance supervisory assessment evidence,1.0
+CTRL-ACC-04,Operational Discipline,Applies to Finance supervisory assessment evidence,1.0
+CTRL-GOV-06,Governance and Oversight,Applies to Finance supervisory assessment evidence,1.0
+CTRL-IR-03,Incident Response,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-MON-01,Security Operations,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-ACC-04,Operational Discipline,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-GOV-06,Governance and Oversight,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Energy supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Energy supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Energy supervisory assessment evidence,1.0
+CTRL-ACC-04,Operational Discipline,Applies to Energy supervisory assessment evidence,1.0
+CTRL-GOV-06,Governance and Oversight,Applies to Energy supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Energy supervisory assessment evidence,1.0
+CTRL-IR-03,Incident Response,Applies to Transport supervisory assessment evidence,1.0
+CTRL-MON-01,Security Operations,Applies to Transport supervisory assessment evidence,1.0
+CTRL-GOV-06,Governance and Oversight,Applies to Transport supervisory assessment evidence,1.0
+CTRL-ACC-04,Operational Discipline,Applies to Transport supervisory assessment evidence,1.0
+CTRL-MON-01,Security Operations,Applies to Transport supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Transport supervisory assessment evidence,1.0
+CTRL-GOV-06,Governance and Oversight,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-MON-01,Security Operations,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-IR-03,Incident Response,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-IR-03,Incident Response,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Finance supervisory assessment evidence,1.0
+CTRL-ACC-04,Operational Discipline,Applies to Finance supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Finance supervisory assessment evidence,1.0
+CTRL-GOV-06,Governance and Oversight,Applies to Finance supervisory assessment evidence,1.0
+CTRL-IR-03,Incident Response,Applies to Finance supervisory assessment evidence,1.0
+CTRL-GOV-06,Governance and Oversight,Applies to Finance supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-ACC-04,Operational Discipline,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-MON-01,Security Operations,Applies to Energy supervisory assessment evidence,1.0
+CTRL-MON-01,Security Operations,Applies to Energy supervisory assessment evidence,1.0
+CTRL-ACC-04,Operational Discipline,Applies to Energy supervisory assessment evidence,1.0
+CTRL-IR-03,Incident Response,Applies to Energy supervisory assessment evidence,1.0
+CTRL-MON-01,Security Operations,Applies to Energy supervisory assessment evidence,1.0
+CTRL-MON-01,Security Operations,Applies to Energy supervisory assessment evidence,1.0
+CTRL-GOV-06,Governance and Oversight,Applies to Transport supervisory assessment evidence,1.0
+CTRL-GOV-06,Governance and Oversight,Applies to Transport supervisory assessment evidence,1.0
+CTRL-MON-01,Security Operations,Applies to Transport supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Transport supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Transport supervisory assessment evidence,1.0
+CTRL-GOV-06,Governance and Oversight,Applies to Transport supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-ACC-04,Operational Discipline,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-IR-03,Incident Response,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Finance supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Finance supervisory assessment evidence,1.0
+CTRL-MON-01,Security Operations,Applies to Finance supervisory assessment evidence,1.0
+CTRL-IR-03,Incident Response,Applies to Finance supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Finance supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Finance supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-IR-03,Incident Response,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-GOV-06,Governance and Oversight,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-ACC-04,Operational Discipline,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-MON-01,Security Operations,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-MON-01,Security Operations,Applies to Energy supervisory assessment evidence,1.0
+CTRL-IR-03,Incident Response,Applies to Energy supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Energy supervisory assessment evidence,1.0
+CTRL-ACC-04,Operational Discipline,Applies to Energy supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Energy supervisory assessment evidence,1.0
+CTRL-IR-03,Incident Response,Applies to Energy supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Transport supervisory assessment evidence,1.0
+CTRL-GOV-06,Governance and Oversight,Applies to Transport supervisory assessment evidence,1.0
+CTRL-ACC-04,Operational Discipline,Applies to Transport supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Transport supervisory assessment evidence,1.0
+CTRL-GOV-06,Governance and Oversight,Applies to Transport supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Transport supervisory assessment evidence,1.0
+CTRL-ACC-04,Operational Discipline,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-ACC-04,Operational Discipline,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-IR-03,Incident Response,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-GOV-06,Governance and Oversight,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-MON-01,Security Operations,Applies to Finance supervisory assessment evidence,1.0
+CTRL-MON-01,Security Operations,Applies to Finance supervisory assessment evidence,1.0
+CTRL-IR-03,Incident Response,Applies to Finance supervisory assessment evidence,1.0
+CTRL-MON-01,Security Operations,Applies to Finance supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Finance supervisory assessment evidence,1.0
+CTRL-ACC-04,Operational Discipline,Applies to Finance supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-ACC-04,Operational Discipline,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-ACC-04,Operational Discipline,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-IR-03,Incident Response,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-GOV-06,Governance and Oversight,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-ACC-04,Operational Discipline,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Energy supervisory assessment evidence,1.0
+CTRL-MON-01,Security Operations,Applies to Energy supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Energy supervisory assessment evidence,1.0
+CTRL-MON-01,Security Operations,Applies to Energy supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Energy supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Energy supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Transport supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Transport supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Transport supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Transport supervisory assessment evidence,1.0
+CTRL-MON-01,Security Operations,Applies to Transport supervisory assessment evidence,1.0
+CTRL-MON-01,Security Operations,Applies to Transport supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-GOV-06,Governance and Oversight,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-MON-01,Security Operations,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-MON-01,Security Operations,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-ACC-04,Operational Discipline,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-ACC-04,Operational Discipline,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-IR-03,Incident Response,Applies to Finance supervisory assessment evidence,1.0
+CTRL-MON-01,Security Operations,Applies to Finance supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Finance supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Finance supervisory assessment evidence,1.0
+CTRL-MON-01,Security Operations,Applies to Finance supervisory assessment evidence,1.0
+CTRL-IR-03,Incident Response,Applies to Finance supervisory assessment evidence,1.0
+CTRL-IR-03,Incident Response,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-ACC-04,Operational Discipline,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-IR-03,Incident Response,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-MON-01,Security Operations,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-ACC-04,Operational Discipline,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-MON-01,Security Operations,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-ACC-04,Operational Discipline,Applies to Energy supervisory assessment evidence,1.0
+CTRL-MON-01,Security Operations,Applies to Energy supervisory assessment evidence,1.0
+CTRL-GOV-06,Governance and Oversight,Applies to Energy supervisory assessment evidence,1.0
+CTRL-ACC-04,Operational Discipline,Applies to Energy supervisory assessment evidence,1.0
+CTRL-IR-03,Incident Response,Applies to Energy supervisory assessment evidence,1.0
+CTRL-ACC-04,Operational Discipline,Applies to Energy supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Transport supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Transport supervisory assessment evidence,1.0
+CTRL-GOV-06,Governance and Oversight,Applies to Transport supervisory assessment evidence,1.0
+CTRL-IR-03,Incident Response,Applies to Transport supervisory assessment evidence,1.0
+CTRL-GOV-06,Governance and Oversight,Applies to Transport supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Transport supervisory assessment evidence,1.0
+CTRL-MON-01,Security Operations,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-GOV-06,Governance and Oversight,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-IR-03,Incident Response,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-GOV-06,Governance and Oversight,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-GOV-06,Governance and Oversight,Applies to Telecom supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Finance supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Finance supervisory assessment evidence,1.0
+CTRL-VUL-05,Cyber Resilience,Applies to Finance supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Finance supervisory assessment evidence,1.0
+CTRL-IR-03,Incident Response,Applies to Finance supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Finance supervisory assessment evidence,1.0
+CTRL-IR-03,Incident Response,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-GOV-06,Governance and Oversight,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-ACC-04,Operational Discipline,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-DET-02,Threat Detection,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-GOV-06,Governance and Oversight,Applies to Defence_Support supervisory assessment evidence,1.0
+CTRL-GOV-06,Governance and Oversight,Applies to Defence_Support supervisory assessment evidence,1.0
