@@ -1,0 +1,46 @@
+CyberLens Dataset Validation Report
+=================================
+CSE count: 30
+Assessment periods: 6
+
+Record counts:
+  cse_entities.csv: 30
+  assessment_periods.csv: 6
+  alerts.csv: 23045
+  investigations.csv: 15090
+  escalations.csv: 290
+  cases.csv: 6047
+  assets.csv: 2131
+  monitoring_evidence.csv: 12437
+  historical_assessments.csv: 180
+  capabilities.csv: 180
+  kpis.csv: 180
+  evidence_records.csv: 33888
+  control_mappings.csv: 186
+  expected_evidence.csv: 7
+  ground_truth.csv: 34
+  scenario_catalogue.csv: 14
+
+Integrity checks:
+  Primary key uniqueness: PASS
+  Foreign key integrity: PASS
+  Temporal consistency: PASS
+  Required file set: PASS
+
+Ground-truth validation scenario instances:
+  benign_anomaly: 2
+  capability_evidence_contradiction: 4
+  execution_gap_fast_closure: 4
+  execution_gap_missing_escalation: 4
+  execution_gap_template_investigation: 4
+  historical_deviation: 2
+  multi_signal_condition: 2
+  negative_space_low_activity: 4
+  negative_space_monitoring_gap: 5
+  peer_deviation: 3
+
+Interpretation:
+  Operational files are synthetic and unlabeled; the ground_truth.csv file is validation-only.
+  The dataset is intentionally varied so anomalies and deviations can be benign, contextual, or supervisory-significant.
+
+Result: ALL CORE VALIDATION CHECKS PASSED.

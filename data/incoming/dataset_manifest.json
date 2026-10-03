@@ -1,0 +1,39 @@
+{
+  "dataset_name": "CyberLens Filtered Synthetic SOC/CSE Supervisory Evidence Dataset",
+  "dataset_version": "1.0",
+  "generation_date": "2026-10-03",
+  "generation_seed": 26157,
+  "cse_count": 30,
+  "assessment_period_count": 6,
+  "period_ids": [
+    "2025-Q3",
+    "2025-Q4",
+    "2026-Q1",
+    "2026-Q2",
+    "2026-Q3",
+    "2026-Q4"
+  ],
+  "record_counts": {
+    "cse_entities.csv": 30,
+    "assessment_periods.csv": 6,
+    "alerts.csv": 23045,
+    "investigations.csv": 15090,
+    "escalations.csv": 290,
+    "cases.csv": 6047,
+    "assets.csv": 2131,
+    "monitoring_evidence.csv": 12437,
+    "historical_assessments.csv": 180,
+    "capabilities.csv": 180,
+    "kpis.csv": 180,
+    "evidence_records.csv": 33888,
+    "control_mappings.csv": 186,
+    "expected_evidence.csv": 7,
+    "ground_truth.csv": 34,
+    "scenario_catalogue.csv": 14
+  },
+  "schema_version": "1.0",
+  "operational_data_is_labeled": false,
+  "validation_data_separate": true,
+  "source_alignment": "PS 26157 + CyberLens PRD dataset-generation design",
+  "notes": "Synthetic, fictional, offline-analytics oriented. Operational files do not embed execution_gap, negative_space, risk_score or final supervisory labels."
+}

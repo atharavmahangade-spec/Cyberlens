@@ -1,0 +1,6 @@
+test_case_id,issue_type,dataset,description,included_in_normal_inference
+DQ-001,duplicate_record,alerts.csv,Duplicate of an existing alert row for pipeline duplicate detection.,No
+DQ-002,missing_optional_field,investigations.csv,Investigation evidence field blank while other investigation fields remain valid.,No
+DQ-003,inconsistent_timestamp,cases.csv,Synthetic test row with case closure timestamp earlier than creation.,No
+DQ-004,invalid_relationship,escalations.csv,Synthetic test row referencing a non-existent investigation ID.,No
+DQ-005,stale_evidence,monitoring_evidence.csv,Synthetic test row with evidence timestamp outside its assessment period.,No

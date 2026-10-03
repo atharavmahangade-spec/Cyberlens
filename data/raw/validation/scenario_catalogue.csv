@@ -1,0 +1,15 @@
+scenario_type,description,validation_source,operational_label_embedded
+execution_gap_investigation,Expected investigation activity is absent for selected higher-severity cases/alerts.,ground_truth.csv,False
+execution_gap_fast_closure,Selected higher-severity alerts have unusually short acknowledgement-to-closure intervals.,ground_truth.csv,False
+execution_gap_missing_escalation,Selected critical activity has case/investigation evidence but no corresponding escalation record.,ground_truth.csv,False
+execution_gap_template_investigation,Selected investigations contain repetitive/template-like analyst activity metadata and sparse evidence.,ground_truth.csv,False
+execution_gap_monitoring_weakness,Monitoring exists but coverage/telemetry is weak for selected assets.,ground_truth.csv,False
+negative_space_missing_investigation,Required/expected investigation evidence is absent in selected contexts.,ground_truth.csv,False
+negative_space_missing_escalation,Expected escalation evidence is absent in selected contexts.,ground_truth.csv,False
+negative_space_low_activity,Operational volume is materially lower than the same entity baseline.,ground_truth.csv,False
+negative_space_monitoring_gap,Critical assets have missing or weak monitoring evidence.,ground_truth.csv,False
+peer_deviation,Entity metrics differ materially from comparable CSEs for contextual review.,ground_truth.csv,False
+historical_deviation,Entity behaviour changes materially relative to its own historical baseline.,ground_truth.csv,False
+capability_evidence_contradiction,Reported KPI/capability evidence differs from observed operational evidence.,ground_truth.csv,False
+benign_anomaly,A genuine unusual pattern is present without asserting supervisory failure.,ground_truth.csv,False
+multi_signal_condition,Multiple independent evidence signals converge on a review area.,ground_truth.csv,False

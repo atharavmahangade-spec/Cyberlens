@@ -1,0 +1,8 @@
+expected_evidence_id,object_type,evidence_category,requirement_level,definition,source_dataset,version
+EXP-001,Critical_Alert,Investigation,Required,Investigation record expected for critical alerts,Investigation_Data,1.0
+EXP-002,Critical_Alert,Escalation,Conditionally_Required,Escalation evidence expected when severity/process conditions require escalation,Escalation_Data,1.0
+EXP-003,Closed_Case,Remediation,Conditionally_Required,Remediation evidence expected when remediation is required,Case_Management_Data,1.0
+EXP-004,Closed_Case,Closure,Required,Closure record expected for closed cases,Case_Management_Data,1.0
+EXP-005,Critical_Asset,Monitoring,Required,Monitoring evidence expected for critical active assets,Monitoring_Data,1.0
+EXP-006,Investigation,Investigation_Evidence,Expected,Investigation evidence expected for completed investigations,Investigation_Data,1.0
+EXP-007,Escalated_Case,Escalation,Required,Escalation record expected when escalation workflow is present,Escalation_Data,1.0
