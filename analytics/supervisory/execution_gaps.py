@@ -478,4 +478,4 @@ if __name__ == "__main__":
         print(f"Reason: {finding['reason']}")
         print(f"Evidence: {finding['evidence']}")
         print(f"Source records: {finding['source_record_ids']}")
-        print("-" * 70)
+        print("-" * 70) 
